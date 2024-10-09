@@ -5,13 +5,12 @@ spring:
     show-sql: false
     #database: postgresql # Postgres SQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting, and it will be selected by default)
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         #dialect: org.hibernate.dialect.PostgreSQLDialect # Postgres SQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting, and it will be selected by default)
         show_sql: true
         format_sql: true
-
   datasource:
     hikari:
       connection-init-sql: SELECT 1
@@ -30,3 +29,30 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+
+  # kafka configuration:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:29092
+  # rabbitmq configuration:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: bacsystem
+    publisher-returns: true
+    publisher-confirm-type: correlated
+    queue-name: bacsystem-queue
+    exchange-name: bacsystem-exchange
+    routing-key: bacsystem-routing-key
+    queue-properties:
+      x-expires: 600000
+      x-message-ttl: 30000
+      x-queue-type: quorum
+  # redis configuration:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: redis

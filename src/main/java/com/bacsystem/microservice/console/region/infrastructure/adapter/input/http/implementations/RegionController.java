@@ -42,8 +42,6 @@ public class RegionController implements IRegionController {
     @Override
     @GetMapping
     public ResponseEntity<List<RegionModel>> findAllExecute() {
-        log.info("findAllExecute {}", messageBrokerInputPort.getAll("bs_region"));
-        messageBrokerInputPort.getAll("bs_region");
         return new ResponseEntity<>(messageBrokerInputPort.getAlls("bs_region"), HttpStatus.OK);
     }
 

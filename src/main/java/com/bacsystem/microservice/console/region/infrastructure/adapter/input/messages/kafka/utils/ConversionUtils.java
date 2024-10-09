@@ -1,4 +1,4 @@
-package com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.utils;
+package com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.kafka.utils;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;

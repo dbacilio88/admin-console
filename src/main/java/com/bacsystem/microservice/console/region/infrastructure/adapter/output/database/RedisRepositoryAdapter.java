@@ -3,7 +3,7 @@ package com.bacsystem.microservice.console.region.infrastructure.adapter.output.
 
 import com.bacsystem.microservice.console.region.application.port.output.database.IRepositoryQuery;
 import com.bacsystem.microservice.console.region.domain.model.RegionModel;
-import com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.utils.ConversionUtils;
+import com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.kafka.utils.ConversionUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.redis.core.RedisTemplate;

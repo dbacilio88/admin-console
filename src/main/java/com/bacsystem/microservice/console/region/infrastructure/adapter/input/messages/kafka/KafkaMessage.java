@@ -1,11 +1,10 @@
-package com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages;
+package com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.kafka;
 
 
 import com.bacsystem.microservice.console.region.application.port.input.IMessageBrokerInputPort;
-import com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.utils.ConversionUtils;
+import com.bacsystem.microservice.console.region.infrastructure.adapter.input.messages.kafka.utils.ConversionUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +30,7 @@ public class KafkaMessage {
 
     private final IMessageBrokerInputPort messageBrokerInputPort;
 
-    @KafkaListener(topicPattern = "dbserver1.public.*", groupId = "group1")
+    //@KafkaListener(topicPattern = "dbserver1.public.*", groupId = "group1")
     public void consumeEvent(@Payload(required = false) final String message) {
         log.info("message {} ", message);
         if (message == null) {
@@ -47,9 +46,9 @@ public class KafkaMessage {
         log.info("table {}", table);
         if (operation.equals("u")) {
             messageBrokerInputPort.updateReg(table, (Map<String, Object>) payload.get("after"));
-        }else if (operation.equals("c")) {
+        } else if (operation.equals("c")) {
             messageBrokerInputPort.insertReg(table, (Map<String, Object>) payload.get("after"));
-        }else if (operation.equals("d")) {
+        } else if (operation.equals("d")) {
             messageBrokerInputPort.deleteReg(table, (Map<String, Object>) payload.get("before"));
         }
     }
